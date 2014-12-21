@@ -1,6 +1,5 @@
 package com.example.louyotedouard.test;
 
-
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,41 +10,41 @@ import android.view.View.OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
 
+public class choixMode extends ActionBarActivity{
 
-public class MainActivity extends ActionBarActivity {
-
-    Button btnLaucchChoix;
+    Button boutonChoixAvis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.choix_mode);
         addListenerOnButton();
     }
 
     public void addListenerOnButton() {
 
-        btnLaucchChoix = (Button) findViewById(R.id.launchChoix);
+        boutonChoixAvis = (Button) findViewById(R.id.btnChoixAvisClient);
 
-        btnLaucchChoix.setOnClickListener(new OnClickListener() {
+        boutonChoixAvis.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
 
                 Intent browserIntent =
-                        new Intent(MainActivity.this, choixMode.class);
+                        new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.mkyong.com"));
                 startActivity(browserIntent);
 
             }
 
         });
+
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_choix_mode, menu);
         return true;
     }
 
