@@ -4,7 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.net.Uri;
 
 public class choixMode extends ActionBarActivity{
 
-    Button boutonChoixAvis;
+    ImageButton boutonChoixAvis,boutonChoixFormulaire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,8 @@ public class choixMode extends ActionBarActivity{
 
     public void addListenerOnButton() {
 
-        boutonChoixAvis = (Button) findViewById(R.id.btnChoixAvisClient);
+        boutonChoixAvis = (ImageButton) findViewById(R.id.btnChoixAvisClient);
+        boutonChoixFormulaire = (ImageButton) findViewById(R.id.btnChoixFormulaireInscription);
 
         boutonChoixAvis.setOnClickListener(new OnClickListener() {
 
@@ -31,7 +32,20 @@ public class choixMode extends ActionBarActivity{
             public void onClick(View arg0) {
 
                 Intent browserIntent =
-                        new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.mkyong.com"));
+                        new Intent();
+                startActivity(browserIntent);
+
+            }
+
+        });
+
+        boutonChoixFormulaire.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Intent browserIntent =
+                        new Intent();
                 startActivity(browserIntent);
 
             }
