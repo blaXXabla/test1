@@ -15,6 +15,7 @@ import android.net.Uri;
 public class MainActivity extends ActionBarActivity {
 
     Button btnLaucchChoix;
+    Button btnIdMagasin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class MainActivity extends ActionBarActivity {
     public void addListenerOnButton() {
 
         btnLaucchChoix = (Button) findViewById(R.id.launchChoix);
-
+        btnIdMagasin = (Button) findViewById(R.id.id_magasin);
         btnLaucchChoix.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -34,6 +35,18 @@ public class MainActivity extends ActionBarActivity {
 
                 Intent browserIntent =
                         new Intent(MainActivity.this, choixMode.class);
+                startActivity(browserIntent);
+
+            }
+
+        });
+        btnIdMagasin.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Intent browserIntent =
+                        new Intent(MainActivity.this, CodeMagasin.class);
                 startActivity(browserIntent);
 
             }
