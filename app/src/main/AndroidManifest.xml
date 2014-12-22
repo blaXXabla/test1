@@ -29,6 +29,10 @@
             android:name=".FormulaireInscription"
             android:label="@string/title_activity_formulaire_inscription" >
         </activity>
+        <activity
+            android:name=".CodeMagasins"
+            android:label="@string/title_activity_code_magasins" >
+        </activity>
     </application>
 
 </manifest>
