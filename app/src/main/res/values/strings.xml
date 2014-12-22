@@ -12,5 +12,7 @@
     <string name="lblAvisClient">Activite avis client</string>
     <string name="title_activity_formulaire_inscription">FormulaireInscription</string>
     <string name="lblFormulaireInscription">Activite formulaire inscription</string>
+    <string name="stringBtnThumbUp"></string>
+    <string name="stringBtnThumbDown"></string>
 
 </resources>

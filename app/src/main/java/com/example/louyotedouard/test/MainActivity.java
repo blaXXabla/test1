@@ -27,6 +27,7 @@ public class MainActivity extends ActionBarActivity {
 
         btnLaucchChoix = (Button) findViewById(R.id.launchChoix);
         btnIdMagasin = (Button) findViewById(R.id.id_magasin);
+
         btnLaucchChoix.setOnClickListener(new OnClickListener() {
 
             @Override
