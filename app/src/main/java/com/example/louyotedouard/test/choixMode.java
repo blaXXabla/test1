@@ -47,6 +47,7 @@ public class choixMode extends ActionBarActivity{
                         new Intent(choixMode.this, FormulaireInscription.class);
                 startActivity(browserIntent);
 
+
             }
 
         });
