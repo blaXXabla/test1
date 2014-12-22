@@ -25,6 +25,9 @@ public class avisClient extends ActionBarActivity {
         addListenerOnButton();
     }
 
+    /**
+     * Gere les evenements sur les boutons
+     */
     public void addListenerOnButton() {
 
         btnThumbUp = (ImageButton) findViewById(R.id.btnThumbUp);
@@ -49,6 +52,7 @@ public class avisClient extends ActionBarActivity {
 
             @Override
             public void onClick(View arg0) {
+                checkSpam();
                 ad.show();
                 closeAlertDialog(ad);
             }
@@ -56,11 +60,10 @@ public class avisClient extends ActionBarActivity {
     }
 
     /**
-     *
-     * @return false si application bloquee a cause de spam, false sinon
+     * Bloque l'application pendant 30s si
+     * plus de 10 vote en 30s
      */
-    public boolean checkSpam() {
-        boolean block=false;
+    public void checkSpam() {
         long timeCurVote=System.currentTimeMillis();
         if(timeLastVote==0)
             timeLastVote=System.currentTimeMillis();
@@ -89,11 +92,10 @@ public class avisClient extends ActionBarActivity {
             }
         }
         timeLastVote=System.currentTimeMillis();
-        return block;
     }
 
     /**
-     *
+     * Confirme la saisie via un AlertDialog
      * @param adg fenetre de dialogue
      */
     public void closeAlertDialog(AlertDialog adg) {
