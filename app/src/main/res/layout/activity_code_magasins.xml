@@ -12,12 +12,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Veuillez saisir le code de votre "
         android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="59dp"
         android:textAlignment="gravity"
         android:editable="false"
-        android:layout_alignParentBottom="false"
-        android:layout_alignParentLeft="false"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -35,11 +32,13 @@
         android:layout_height="wrap_content"
         android:text="0"
         android:id="@+id/btn_code0"
-        android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
         android:layout_marginTop="104dp"
-        android:layout_gravity="center|bottom" />
+        android:layout_gravity="center|bottom"
+        android:layout_below="@+id/textView2"
+        android:layout_toLeftOf="@+id/et_codeMagasins"
+        android:layout_toStartOf="@+id/et_codeMagasins"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -136,8 +135,10 @@
         android:id="@+id/btn_code9"
         android:layout_gravity="center|bottom"
         android:layout_below="@+id/btn_code4"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+        android:layout_toRightOf="@+id/et_codeMagasins"
+        android:layout_toEndOf="@+id/et_codeMagasins"
+        android:layout_marginLeft="9dp"
+        android:layout_marginStart="9dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -145,11 +146,19 @@
         android:inputType="numberSigned"
         android:ems="10"
         android:id="@+id/et_codeMagasins"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/btn_code4"
-        android:layout_alignEnd="@+id/btn_code4"
-        android:layout_alignLeft="@+id/btn_code0"
-        android:layout_alignStart="@+id/btn_code0"
-        android:text="code magasins" />
+        android:text="code magasins"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valider"
+        android:id="@+id/btn_magasins"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/btn_code6"
+        android:layout_toLeftOf="@+id/btn_code8"
+        android:layout_toStartOf="@+id/btn_code8" />
 
 </RelativeLayout>
