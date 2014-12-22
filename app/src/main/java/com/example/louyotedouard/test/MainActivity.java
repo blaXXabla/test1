@@ -40,18 +40,18 @@ public class MainActivity extends ActionBarActivity {
             }
 
         });
-        /*btnIdMagasin.setOnClickListener(new OnClickListener() {
+        btnIdMagasin.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
 
                 Intent browserIntent =
-                        new Intent(MainActivity.this, CodeMagasin.class);
+                        new Intent(MainActivity.this, CodeMagasins.class);
                 startActivity(browserIntent);
 
             }
 
-        });*/
+        });
     }
 
 
