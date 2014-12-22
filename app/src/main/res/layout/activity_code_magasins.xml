@@ -18,7 +18,6 @@
         android:editable="false"
         android:layout_alignParentBottom="false"
         android:layout_alignParentLeft="false"
-        android:layout_alignEnd="center"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -139,5 +138,18 @@
         android:layout_below="@+id/btn_code4"
         android:layout_alignRight="@+id/textView"
         android:layout_alignEnd="@+id/textView" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:id="@+id/et_codeMagasins"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/btn_code4"
+        android:layout_alignEnd="@+id/btn_code4"
+        android:layout_alignLeft="@+id/btn_code0"
+        android:layout_alignStart="@+id/btn_code0"
+        android:text="code magasins" />
 
 </RelativeLayout>
