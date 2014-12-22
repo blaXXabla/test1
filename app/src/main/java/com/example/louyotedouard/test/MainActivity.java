@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.content.Intent;
-import android.net.Uri;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -40,7 +39,7 @@ public class MainActivity extends ActionBarActivity {
             }
 
         });
-        btnIdMagasin.setOnClickListener(new OnClickListener() {
+        /*btnIdMagasin.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -51,7 +50,7 @@ public class MainActivity extends ActionBarActivity {
 
             }
 
-        });
+        });*/
     }
 
 

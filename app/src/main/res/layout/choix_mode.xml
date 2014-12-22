@@ -5,19 +5,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.louyotedouard.test.choixMode">
-
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1">
     <LinearLayout
         android:id="@+id/linearLayoutBoutonAvis"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="center"
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:padding="30px">
+        android:padding="30px"
+        android:layout_weight="0.5">
 
         <ImageButton
             android:id="@+id/btnChoixAvisClient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/avis_client" />
 
         <TextView
             android:id="@+id/textViewBtnAvis"
@@ -29,17 +34,18 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutBoutonFormulaire"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="center"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:padding="30px"
-        android:layout_marginLeft="@dimen/margin_large">
+        android:layout_weight="0.5">
 
         <ImageButton
             android:id="@+id/btnChoixFormulaireInscription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/formulaire_inscription" />
 
         <TextView
             android:id="@+id/textViewBtnFormulaire"
@@ -48,5 +54,5 @@
             android:text="@string/stringBtnFormulaire"
             android:textAppearance="?android:attr/textAppearanceMedium" android:layout_gravity="center"/>
     </LinearLayout>
-
+</LinearLayout>
 </RelativeLayout>

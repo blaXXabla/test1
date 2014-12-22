@@ -8,7 +8,6 @@ import android.widget.ImageButton;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.content.Intent;
-import android.net.Uri;
 
 public class choixMode extends ActionBarActivity{
 
@@ -32,7 +31,7 @@ public class choixMode extends ActionBarActivity{
             public void onClick(View arg0) {
 
                 Intent browserIntent =
-                        new Intent();
+                        new Intent(choixMode.this, avisClient.class);
                 startActivity(browserIntent);
 
             }
@@ -45,7 +44,7 @@ public class choixMode extends ActionBarActivity{
             public void onClick(View arg0) {
 
                 Intent browserIntent =
-                        new Intent();
+                        new Intent(choixMode.this, FormulaireInscription.class);
                 startActivity(browserIntent);
 
             }

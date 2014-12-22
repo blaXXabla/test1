@@ -8,5 +8,9 @@
     <string name="title_activity_choix_mode">choixMode</string>
     <string name="stringBtnAvis">Avis Client</string>
     <string name="stringBtnFormulaire">Formulaire Inscription</string>
+    <string name="title_activity_avis_client">avisClient</string>
+    <string name="lblAvisClient">Activite avis client</string>
+    <string name="title_activity_formulaire_inscription">FormulaireInscription</string>
+    <string name="lblFormulaireInscription">Activite formulaire inscription</string>
 
 </resources>
