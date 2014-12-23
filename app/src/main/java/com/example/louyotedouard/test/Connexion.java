@@ -1,74 +1,128 @@
 package com.example.louyotedouard.test;
-
-import android.os.AsyncTask;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
+
+import android.content.Context;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 /**
- * Created by Xavier on 23/12/2014.
+ * Created by PC Xavier on 23/12/2014.
  */
-public class Connexion {
-    private String jsonResult;
-    private String url = "http://cpriyankara.coolpage.biz/employee_details.php";
+public class Connexion extends AsyncTask<String, Integer, Double>{
 
+    private String link,result;
+    private Context c;
+    private InputStream is;
 
+    public Connexion(Context context)
+    {
+        c= context;
+        this.link="http://louyotedouard.fr/autre/test.php";
+    }
 
-    // Async Task to access the web
-    private class JsonReadTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... params) {
+    public void insert()
+    {
+        int i1=10;
+        int i2=57;
+        int i3=125;
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("positif",Integer.toString(i1)));
+        nameValuePairs.add(new BasicNameValuePair("negatif",Integer.toString(i2)));
+        nameValuePairs.add(new BasicNameValuePair("id_magasin",Integer.toString(i3)));
+
+        try
+        {
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost(params[0]);
-            try {
-                HttpResponse response = httpclient.execute(httppost);
-                jsonResult = inputStreamToString(
-                        response.getEntity().getContent()).toString();
-            }
-
-            catch (ClientProtocolException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
+            HttpPost httppost = new HttpPost("http://louyotedouard.fr/autre/test.php");
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            HttpResponse response = httpclient.execute(httppost);
+            HttpEntity entity = response.getEntity();
+            is = entity.getContent();
+            Log.e("pass 1", "connection success ");
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(c, e.toString(),
+                    Toast.LENGTH_LONG).show();
+            System.out.print(e.toString());
         }
 
-        private StringBuilder inputStreamToString(InputStream is) {
-            String rLine = "";
-            StringBuilder answer = new StringBuilder();
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-
-            try {
-                while ((rLine = rd.readLine()) != null) {
-                    answer.append(rLine);
-                }
+        try
+        {
+            BufferedReader reader = new BufferedReader
+                    (new InputStreamReader(is,"iso-8859-1"),8);
+            StringBuilder sb = new StringBuilder();
+            String line="";
+            while ((line = reader.readLine()) != null)
+            {
+                sb.append(line + "\n");
             }
-
-            catch (IOException e) {
-                // e.printStackTrace();
-                System.out.println("Error..." + e.toString());
-            }
-            return answer;
+            is.close();
+            result = sb.toString();
+            System.out.print(result);
+            Log.e("pass 2", "connection success ");
+        }
+        catch(Exception e)
+        {
+            Log.e("Fail 2", e.toString());
         }
 
-        @Override
-        protected void onPostExecute(String result) {
+        try
+        {
+            JSONObject json_data = new JSONObject(result);
+            int code;
+            code=(json_data.getInt("code"));
 
+            if(code==1)
+            {
+                Toast.makeText(c, "1",
+                        Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                Toast.makeText(c, "Else",
+                        Toast.LENGTH_LONG).show();
+            }
         }
-    }// end async task
+        catch(Exception e)
+        {
+            Log.e("Fail 3", e.toString());
+        }
+    }
 
-    public void accessWebService() {
-        JsonReadTask task = new JsonReadTask();
-        // passes values for the urls string array
-        task.execute(new String[] { url });
+    @Override
+    protected Double doInBackground(String... params) {
+        // TODO Auto-generated method stub
+        insert();
+        return null;
+    }
+
+    protected void onPostExecute(Double result){
+        //pb.setVisibility(View.GONE);
+        //Toast.makeText(getApplicationContext(), "command sent", Toast.LENGTH_LONG).show();
+    }
+
+    protected void onProgressUpdate(Integer... progress){
+        //pb.setProgress(progress[0]);
     }
 }

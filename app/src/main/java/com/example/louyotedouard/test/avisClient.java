@@ -17,12 +17,14 @@ public class avisClient extends ActionBarActivity {
     private long timeLastVote=0;
     private int nbVote=0;
     private AlertDialog ad;
+    Connexion c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avis_client);
         addListenerOnButton();
+        c=new Connexion(this);
     }
 
     /**
@@ -43,6 +45,10 @@ public class avisClient extends ActionBarActivity {
             @Override
             public void onClick(View arg0) {
                 checkSpam();
+                try {
+                    c.doInBackground();
+                }
+                catch (Exception e){e.printStackTrace();}
                 ad.show();
                 closeAlertDialog(ad);
             }
@@ -53,6 +59,10 @@ public class avisClient extends ActionBarActivity {
             @Override
             public void onClick(View arg0) {
                 checkSpam();
+                try {
+                    c.insert();
+                }
+                catch (Exception e){}
                 ad.show();
                 closeAlertDialog(ad);
             }
