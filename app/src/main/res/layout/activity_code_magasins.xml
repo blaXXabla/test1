@@ -157,8 +157,17 @@
         android:layout_height="wrap_content"
         android:text="Valider"
         android:id="@+id/btn_magasins"
-        android:layout_below="@+id/btn_code7"
-        android:layout_toRightOf="@+id/btn_code6"
-        android:layout_toEndOf="@+id/btn_code6" />
+        android:layout_below="@+id/btn_code6"
+        android:layout_toRightOf="@+id/btn_code5"
+        android:layout_toEndOf="@+id/btn_code5" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Effacer"
+        android:id="@+id/btn_effacer"
+        android:layout_below="@+id/btn_code8"
+        android:layout_toEndOf="@+id/btn_code7" />
 
 </RelativeLayout>
