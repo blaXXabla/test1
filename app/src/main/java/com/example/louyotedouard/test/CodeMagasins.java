@@ -55,11 +55,10 @@ public class CodeMagasins extends ActionBarActivity {
 
             @Override
             public void onClick(View arg0) {
-
-                et_codemagasin.setText(et_codemagasin.getText().subSequence(0,et_codemagasin.length()-1));
-
+                if (et_codemagasin.length()>0){ // test si l' édit text est vide, si il n' est pas vide on efface un caractère sinon on ne fait rien ( cause : crash de l' application )
+                    et_codemagasin.setText(et_codemagasin.getText().subSequence(0,et_codemagasin.length()-1));
+                }
             }
-
         });
 
         bt0.setOnClickListener(new View.OnClickListener() {
