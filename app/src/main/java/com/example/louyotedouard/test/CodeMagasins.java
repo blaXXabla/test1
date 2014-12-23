@@ -5,8 +5,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+
 
 
 public class CodeMagasins extends ActionBarActivity {
@@ -16,6 +18,7 @@ public class CodeMagasins extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_code_magasins);
+        addListenerOnButton();
     }
     public void addListenerOnButton() {
 
@@ -34,6 +37,12 @@ public class CodeMagasins extends ActionBarActivity {
 
         });
     }
+
+    /*public void actionPerformed(MotionEvent arg0) {
+        //Lorsque l'on clique sur le bouton, on met à jour le JLabel
+        this.compteur++;
+        label.setText("Vous avez cliqué " + this.compteur + " fois");
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
