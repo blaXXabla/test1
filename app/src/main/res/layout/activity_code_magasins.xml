@@ -150,7 +150,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
         android:hint="Code magasins"
-        android:autoText="true" />
+        android:windowSoftInputMode="adjustResize"
+        android:autoText="true"
+        android:textAlignment="center" />
 
     <Button
         android:layout_width="wrap_content"
