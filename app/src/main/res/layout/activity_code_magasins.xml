@@ -146,10 +146,10 @@
         android:inputType="numberSigned"
         android:ems="10"
         android:id="@+id/et_codeMagasins"
-        android:text="code magasins"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
+        android:hint="Code magasins"
         android:autoText="true" />
 
     <Button
