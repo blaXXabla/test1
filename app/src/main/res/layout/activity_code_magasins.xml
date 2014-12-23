@@ -32,13 +32,13 @@
         android:layout_height="wrap_content"
         android:text="0"
         android:id="@+id/btn_code0"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="11dp"
         android:layout_gravity="center|bottom"
-        android:layout_below="@+id/textView2"
-        android:layout_toLeftOf="@+id/et_codeMagasins"
-        android:layout_toStartOf="@+id/et_codeMagasins"
         android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        android:layout_below="@+id/et_codeMagasins"
+        android:layout_toLeftOf="@+id/et_codeMagasins"
+        android:layout_toStartOf="@+id/et_codeMagasins" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -149,16 +149,16 @@
         android:text="code magasins"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp" />
+        android:layout_marginTop="17dp"
+        android:autoText="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Valider"
         android:id="@+id/btn_magasins"
-        android:layout_marginTop="35dp"
-        android:layout_below="@+id/btn_code6"
-        android:layout_toLeftOf="@+id/btn_code8"
-        android:layout_toStartOf="@+id/btn_code8" />
+        android:layout_below="@+id/btn_code7"
+        android:layout_toRightOf="@+id/btn_code6"
+        android:layout_toEndOf="@+id/btn_code6" />
 
 </RelativeLayout>
