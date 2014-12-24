@@ -9,7 +9,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import android.app.Activity;
 import android.os.AsyncTask;
 
 /**
@@ -24,7 +23,6 @@ public class Connexion extends AsyncTask<String, Integer, Double>{
         HttpPost httppost = new HttpPost("http://louyotedouard.fr/autre/test.php");
         try
         {
-
             ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
             nameValuePairs.add(new BasicNameValuePair("avis",avis));
             nameValuePairs.add(new BasicNameValuePair("id_magasin",id));
@@ -33,8 +31,6 @@ public class Connexion extends AsyncTask<String, Integer, Double>{
         }
         catch(Exception e)
         {
-//            Toast.makeText(c, e.toString(),
-//                    Toast.LENGTH_LONG).show();
         }
     }
 
