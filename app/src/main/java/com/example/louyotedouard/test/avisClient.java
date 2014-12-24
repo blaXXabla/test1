@@ -42,8 +42,10 @@ public class avisClient extends ActionBarActivity {
 
             @Override
             public void onClick(View arg0) {
+                final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+                int idMag=globalVariable.getIdMagasin();
                 checkSpam();
-                new Connexion().execute("positif");
+                new Connexion().execute("positif",Integer.toString(idMag));
                 ad.show();
                 closeAlertDialog(ad);
             }
@@ -53,8 +55,10 @@ public class avisClient extends ActionBarActivity {
 
             @Override
             public void onClick(View arg0) {
+                final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+                int idMag=globalVariable.getIdMagasin();
                 checkSpam();
-                new Connexion().execute("negatif");
+                new Connexion().execute("negatif",Integer.toString(idMag));
                 ad.show();
                 closeAlertDialog(ad);
             }

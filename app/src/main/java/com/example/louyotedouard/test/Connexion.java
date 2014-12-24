@@ -9,29 +9,25 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import android.content.Context;
+import android.app.Activity;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 /**
  * Created by PC Xavier on 23/12/2014.
  */
 public class Connexion extends AsyncTask<String, Integer, Double>{
 
-
-    public void insert()
+    public void insert(String a,String id)
     {
+        String avis=a;
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost("http://louyotedouard.fr/autre/test.php");
         try
         {
-            int i1=10;
-            int i2=57;
-            int i3=126;
+
             ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
-            nameValuePairs.add(new BasicNameValuePair("positif",Integer.toString(i1)));
-            nameValuePairs.add(new BasicNameValuePair("negatif",Integer.toString(i2)));
-            nameValuePairs.add(new BasicNameValuePair("id_magasin",Integer.toString(i3)));
+            nameValuePairs.add(new BasicNameValuePair("avis",avis));
+            nameValuePairs.add(new BasicNameValuePair("id_magasin",id));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             HttpResponse response = httpclient.execute(httppost);
         }
@@ -44,7 +40,9 @@ public class Connexion extends AsyncTask<String, Integer, Double>{
 
     @Override
     protected Double doInBackground(String... params) {
-        insert();
+        String avis = params[0];
+        String id=params[1];
+        insert(avis,id);
         return null;
     }
 

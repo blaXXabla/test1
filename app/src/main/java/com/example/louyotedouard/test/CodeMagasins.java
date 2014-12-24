@@ -43,6 +43,8 @@ public class CodeMagasins extends ActionBarActivity {
             @Override
             public void onClick(View arg0) {
 
+                final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+                globalVariable.setIdMagasin(Integer.parseInt(et_codemagasin.getText().toString()));
                 Intent browserIntent =
                         new Intent(CodeMagasins.this, choixMode.class);
                 startActivity(browserIntent);
