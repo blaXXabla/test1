@@ -85,28 +85,6 @@ public class avisClient extends ActionBarActivity {
         });
     }
 
-    public void pushDataHL()
-    {
-        String FILENAME = "dbOffline.txt";
-        File file = getApplicationContext().getFileStreamPath(FILENAME);
-        if(file.exists())
-        {
-            try
-            {
-                FileInputStream in = openFileInput(FILENAME);
-                InputStreamReader inputStreamReader = new InputStreamReader(in);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                StringBuilder sb = new StringBuilder();
-                String line;
-                while ((line = bufferedReader.readLine()) != null) {
-                    sb.append(line);
-                }
-            }
-            catch(FileNotFoundException fnf){}
-            catch (Exception e){}
-        }
-    }
-
     /**
      * Bloque l'application pendant 30s si
      * plus de 10 vote en 30s
@@ -213,6 +191,34 @@ public class avisClient extends ActionBarActivity {
             Toast toast = Toast.makeText(getApplicationContext(), "Crash Ajout", Toast.LENGTH_SHORT);
             toast.show();
         }
+    }
+
+    /**
+     * Insere dans la bdd les data stockees dans le fichier
+     */
+    public void pushDataHL()
+    {
+        String FILENAME = "dbOffline.txt";
+        File file = getApplicationContext().getFileStreamPath(FILENAME);
+        if(file.exists())
+        {
+            try
+            {
+                FileInputStream in = openFileInput(FILENAME);
+                InputStreamReader inputStreamReader = new InputStreamReader(in);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    String avis=line.substring(0,line.indexOf("%"));
+                    String id=line.substring(line.indexOf("%")+1);
+                    new Connexion().execute(avis, id);
+                }
+            }
+            catch(FileNotFoundException fnf){}
+            catch (Exception e){}
+        }
+        file.delete();
     }
 
     @Override
