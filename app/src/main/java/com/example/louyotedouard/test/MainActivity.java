@@ -15,6 +15,7 @@ public class MainActivity extends ActionBarActivity {
 
     Button btnLaucchChoix;
     Button btnIdMagasin;
+    Button btnDataHL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

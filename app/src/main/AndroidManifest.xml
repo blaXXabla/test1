@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.example.louyotedouard.test.GlobalClass"
+        android:name=".GlobalClass"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -36,6 +36,10 @@
         <activity
             android:name=".CodeMagasins"
             android:label="@string/title_activity_code_magasins" >
+        </activity>
+        <activity
+            android:name=".testDataHL"
+            android:label="@string/title_activity_test_data_hl" >
         </activity>
     </application>
 

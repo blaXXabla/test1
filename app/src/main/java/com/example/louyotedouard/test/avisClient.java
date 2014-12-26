@@ -12,8 +12,12 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 
 
 public class avisClient extends ActionBarActivity {
@@ -51,8 +55,10 @@ public class avisClient extends ActionBarActivity {
                 final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
                 int idMag=globalVariable.getIdMagasin();
                 checkSpam();
-                if(haveNetworkConnection())
-                    new Connexion().execute("positif",Integer.toString(idMag));
+                if(haveNetworkConnection()) {
+                    pushDataHL();
+                    new Connexion().execute("positif", Integer.toString(idMag));
+                }
                 else
                     stockDataInFile("positif",idMag);
                 ad.show();
@@ -67,14 +73,38 @@ public class avisClient extends ActionBarActivity {
                 final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
                 int idMag = globalVariable.getIdMagasin();
                 checkSpam();
-                if(haveNetworkConnection())
+                if(haveNetworkConnection()) {
+                    pushDataHL();
                     new Connexion().execute("negatif", Integer.toString(idMag));
+                }
                 else
                     stockDataInFile("negatif", idMag);
                 ad.show();
                 closeAlertDialog(ad);
             }
         });
+    }
+
+    public void pushDataHL()
+    {
+        String FILENAME = "dbOffline.txt";
+        File file = getApplicationContext().getFileStreamPath(FILENAME);
+        if(file.exists())
+        {
+            try
+            {
+                FileInputStream in = openFileInput(FILENAME);
+                InputStreamReader inputStreamReader = new InputStreamReader(in);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    sb.append(line);
+                }
+            }
+            catch(FileNotFoundException fnf){}
+            catch (Exception e){}
+        }
     }
 
     /**
