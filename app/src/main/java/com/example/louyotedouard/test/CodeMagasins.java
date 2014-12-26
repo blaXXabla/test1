@@ -13,9 +13,10 @@ import android.widget.EditText;
 
 public class CodeMagasins extends ActionBarActivity {
 
-    private Button btn_launch;
-    private EditText et_codemagasin;
-    private Button btn_effacer;
+    private     Button      btn_launch;
+    private     EditText    et_codemagasin;
+    private     Button      btn_effacer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -22,11 +22,11 @@ import java.io.InputStreamReader;
 
 public class avisClient extends ActionBarActivity {
 
-    private ImageButton btnThumbUp;
-    private ImageButton btnThumbDown;
-    private long timeLastVote=0;
-    private int nbVote=0;
-    private AlertDialog ad;
+    private     ImageButton     btnThumbUp;
+    private     ImageButton     btnThumbDown;
+    private     long            timeLastVote    =0;
+    private     int             nbVote          =0;
+    private     AlertDialog     ad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,15 +54,16 @@ public class avisClient extends ActionBarActivity {
             public void onClick(View arg0) {
                 final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
                 int idMag=globalVariable.getIdMagasin();
-                checkSpam();
-                if(haveNetworkConnection()) {
-                    pushDataHL();
-                    new Connexion().execute("positif", Integer.toString(idMag));
+                boolean spam = checkSpam();
+                if(!spam) {
+                    if (haveNetworkConnection()) {
+                        pushDataHL();
+                        new Connexion().execute("positif", Integer.toString(idMag));
+                    } else
+                        stockDataInFile("positif", idMag);
+                    ad.show();
+                    closeAlertDialog(ad);
                 }
-                else
-                    stockDataInFile("positif",idMag);
-                ad.show();
-                closeAlertDialog(ad);
             }
         });
 
@@ -72,15 +73,16 @@ public class avisClient extends ActionBarActivity {
             public void onClick(View arg0) {
                 final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
                 int idMag = globalVariable.getIdMagasin();
-                checkSpam();
-                if(haveNetworkConnection()) {
-                    pushDataHL();
-                    new Connexion().execute("negatif", Integer.toString(idMag));
+                boolean spam = checkSpam();
+                if(!spam) {
+                    if (haveNetworkConnection()) {
+                        pushDataHL();
+                        new Connexion().execute("negatif", Integer.toString(idMag));
+                    } else
+                        stockDataInFile("negatif", idMag);
+                    ad.show();
+                    closeAlertDialog(ad);
                 }
-                else
-                    stockDataInFile("negatif", idMag);
-                ad.show();
-                closeAlertDialog(ad);
             }
         });
     }
@@ -88,8 +90,10 @@ public class avisClient extends ActionBarActivity {
     /**
      * Bloque l'application pendant 30s si
      * plus de 10 vote en 30s
+     * @return true si l'application est bloquee, false sinon
      */
-    public void checkSpam() {
+    public boolean checkSpam() {
+        boolean block=false;
         long timeCurVote=System.currentTimeMillis();
         if(timeLastVote==0)
             timeLastVote=System.currentTimeMillis();
@@ -101,6 +105,7 @@ public class avisClient extends ActionBarActivity {
                 builder1.setTitle("Application bloquée");
                 builder1.setMessage("Trop de votes");
                 builder1.setCancelable(false);
+                block=true;
                 final AlertDialog adBlock = builder1.create();
                 adBlock.show();
                 new CountDownTimer(30000, 1000) {
@@ -117,6 +122,7 @@ public class avisClient extends ActionBarActivity {
             }
         }
         timeLastVote=System.currentTimeMillis();
+        return block;
     }
 
     /**
