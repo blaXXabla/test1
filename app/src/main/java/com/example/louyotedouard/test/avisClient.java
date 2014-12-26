@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 
 public class avisClient extends ActionBarActivity {
@@ -52,7 +54,7 @@ public class avisClient extends ActionBarActivity {
                 if(haveNetworkConnection())
                     new Connexion().execute("positif",Integer.toString(idMag));
                 else
-                    System.out.print("Pas de connexion");
+                    stockDataInFile("positif",idMag);
                 ad.show();
                 closeAlertDialog(ad);
             }
@@ -68,7 +70,7 @@ public class avisClient extends ActionBarActivity {
                 if(haveNetworkConnection())
                     new Connexion().execute("negatif", Integer.toString(idMag));
                 else
-                    System.out.print("Pas de connexion");
+                    stockDataInFile("negatif", idMag);
                 ad.show();
                 closeAlertDialog(ad);
             }
@@ -85,7 +87,6 @@ public class avisClient extends ActionBarActivity {
             timeLastVote=System.currentTimeMillis();
         if(timeCurVote-timeLastVote<3000) {
             nbVote++;
-            System.out.println(nbVote);
             if(nbVote==10)
             {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
@@ -147,6 +148,41 @@ public class avisClient extends ActionBarActivity {
                     ad.dismiss();
             }
         }.start();
+    }
+
+    /**
+     * Ajoute dans un fichier les data necessaires aux requetes
+     * @param s valeur de l'avis
+     * @param id id du magasin
+     */
+    public void stockDataInFile(String s, int id)
+    {
+        String input=s+"%"+Integer.toString(id)+"\n";
+        String FILENAME = "dbOffline.txt";
+        File file = getApplicationContext().getFileStreamPath(FILENAME);
+
+        //Cree fichier si inexistant
+        if(!file.exists()) {
+            try {
+                file.createNewFile();
+            }
+            catch (Exception e){
+                Toast toast = Toast.makeText(getApplicationContext(), "Crash creation fichier", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        }
+
+        //Ajout au fichier des data pour la requete
+        try
+        {
+            FileOutputStream fOut = openFileOutput(FILENAME,  MODE_APPEND);
+            fOut.write(input.getBytes());
+            fOut.close();
+        }
+        catch (Exception e){
+            Toast toast = Toast.makeText(getApplicationContext(), "Crash Ajout", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     @Override
