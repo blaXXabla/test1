@@ -47,6 +47,7 @@ public class FormulaireInscription extends ActionBarActivity {
             @Override
             public void onClick(View arg0) {
                 textView.setText(R.string.radioEmail);
+                et_info.setText("");
                 textView.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
             }
         });
@@ -56,6 +57,7 @@ public class FormulaireInscription extends ActionBarActivity {
             @Override
             public void onClick(View arg0) {
                 textView.setText(R.string.radioNumTel);
+                et_info.setText("");
                 textView.setInputType(InputType.TYPE_CLASS_PHONE);
             }
         });
