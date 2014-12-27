@@ -64,7 +64,7 @@ public class veille extends ActionBarActivity {
 
 
 
-        new CountDownTimer(5000, 1000) {
+         new CountDownTimer(5000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {}
 
@@ -74,10 +74,14 @@ public class veille extends ActionBarActivity {
                 if (curIndex == imageResources.length - 1) {
                     curIndex = 0;
                     imageSwitcher.setImageResource(imageResources[curIndex]);
+                    this.start();
+
                 } else {
                     imageSwitcher.setImageResource(imageResources[++curIndex]);
+                    this.start();
                 }
             }
-        }.start();
+         }.start();
+
     }
 }
