@@ -213,7 +213,6 @@ public class avisClient extends ActionBarActivity {
                 FileInputStream in = openFileInput(FILENAME);
                 InputStreamReader inputStreamReader = new InputStreamReader(in);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                StringBuilder sb = new StringBuilder();
                 String line;
                 while ((line = bufferedReader.readLine()) != null) {
                     String avis=line.substring(0,line.indexOf("%"));

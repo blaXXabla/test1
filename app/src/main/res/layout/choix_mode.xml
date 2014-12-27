@@ -45,7 +45,7 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:padding="30px"
-            android:layout_weight="0.5">
+            android:layout_weight="0.3">
 
             <ImageButton
                 android:padding="0dip"
@@ -61,6 +61,32 @@
                 android:layout_height="wrap_content"
                 android:text="@string/stringBtnFormulaire"
                 android:textAppearance="?android:attr/textAppearanceMedium" android:layout_gravity="center"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayoutBoutonPush"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:padding="30px"
+            android:layout_weight="0.3">
+
+            <ImageButton
+                android:padding="0dip"
+                android:id="@+id/btnPush"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/data_hl" />
+
+            <TextView
+                android:paddingTop="@dimen/padding_medium"
+                android:id="@+id/textViewPush"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/stringPush"
+                android:textAppearance="?android:attr/textAppearanceMedium" android:layout_gravity="center"/>
+
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

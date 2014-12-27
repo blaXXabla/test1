@@ -14,6 +14,7 @@
     <string name="lblFormulaireInscription">Activite formulaire inscription</string>
     <string name="stringBtnThumbUp"></string>
     <string name="stringBtnThumbDown"></string>
+    <string name="stringPush">Ajouter données HL</string>
     <string name="title_activity_code_magasins">CodeMagasins</string>
     <string name="title_activity_test_data_hl">testDataHL</string>
 
