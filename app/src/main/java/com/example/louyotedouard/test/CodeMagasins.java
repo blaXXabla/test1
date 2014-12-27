@@ -163,12 +163,6 @@ public class CodeMagasins extends ActionBarActivity {
         });
     }
 
-    /*public void actionPerformed(MotionEvent arg0) {
-        //Lorsque l'on clique sur le bouton, on met à jour le JLabel
-        this.compteur++;
-        label.setText("Vous avez cliqué " + this.compteur + " fois");
-    }*/
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
