@@ -16,6 +16,7 @@ public class MainActivity extends ActionBarActivity {
     Button btnLaucchChoix;
     Button btnIdMagasin;
     Button btnDataHL;
+    Button btnIdVeille;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainActivity extends ActionBarActivity {
 
         btnLaucchChoix = (Button) findViewById(R.id.launchChoix);
         btnIdMagasin = (Button) findViewById(R.id.id_magasin);
+        btnIdVeille = (Button) findViewById(R.id.veille);
 
         btnLaucchChoix.setOnClickListener(new OnClickListener() {
 
@@ -48,6 +50,18 @@ public class MainActivity extends ActionBarActivity {
 
                 Intent browserIntent =
                         new Intent(MainActivity.this, CodeMagasins.class);
+                startActivity(browserIntent);
+
+            }
+
+        });
+        btnIdVeille.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Intent browserIntent =
+                        new Intent(MainActivity.this, veille.class);
                 startActivity(browserIntent);
 
             }

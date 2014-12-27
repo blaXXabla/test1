@@ -1,4 +1,4 @@
-package com.example.louyotedouard.test;
+/* package com.example.louyotedouard.test;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -703,4 +703,4 @@ public class Mailin {
     public String delete_sender(int id) {
         return delete("advanced/" + id, "");
     }
-}
+}*/
