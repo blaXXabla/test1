@@ -62,14 +62,14 @@ public class choixMode extends ActionBarActivity{
 
         });
 
+        /**
+         * Insere dans la bdd les data stockees dans le fichier
+         */
         boutonPush.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
 
-                /**
-                 * Insere dans la bdd les data stockees dans le fichier
-                 */
                 String FILENAME = "dbOffline.txt";
                 File file = getApplicationContext().getFileStreamPath(FILENAME);
                 if(haveNetworkConnection()) {
