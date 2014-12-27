@@ -18,5 +18,8 @@
     <string name="title_activity_code_magasins">CodeMagasin</string>
     <string name="title_activity_test_data_hl">testDataHL</string>
     <string name="title_activity_veille">veille</string>
-
+    <string name="stringEmail">Email : </string>
+    <string name="stringNumTel">Telephone : </string>
+    <string name="radioEmail">Email</string>
+    <string name="radioNumTel">Telephone</string>
 </resources>

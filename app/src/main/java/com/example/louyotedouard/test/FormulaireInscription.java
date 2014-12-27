@@ -2,18 +2,109 @@ package com.example.louyotedouard.test;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class FormulaireInscription extends ActionBarActivity {
+
+    private         TextView            textView;
+    private         RadioButton         rb_Email;
+    private         RadioButton         rb_NumTel;
+    private         Button              btnLaunch;
+    private         EditText            et_info;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulaire_inscription);
+        addListenerOnButton();
     }
 
+    public void addListenerOnButton() {
+        textView = (TextView) findViewById(R.id.textViewFormulaire);
+        rb_Email = (RadioButton) findViewById(R.id.radio_email);
+        rb_NumTel = (RadioButton) findViewById(R.id.radio_numtel);
+        btnLaunch = (Button) findViewById(R.id.btn_ValideFormulaireIns);
+        et_info = (EditText) findViewById(R.id.et_info);
+
+        if (rb_Email.isChecked())
+            textView.setText(R.string.radioEmail);
+        else
+            textView.setText(R.string.radioNumTel);
+
+        rb_Email.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                textView.setText(R.string.radioEmail);
+                textView.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+            }
+        });
+
+        rb_NumTel.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                textView.setText(R.string.radioNumTel);
+                textView.setInputType(InputType.TYPE_CLASS_PHONE);
+            }
+        });
+
+        btnLaunch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                if(rb_Email.isChecked())
+                {
+                    if(isValidEmail(et_info.getText().toString())) {
+                    }
+                    else
+                    {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Veuillez saisir une addresse email correcte", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                }
+                else
+                {
+                    if(isValidPhoneNumber(et_info.getText().toString())) {
+                    }
+                    else
+                    {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Veuillez saisir un numéro correct", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                }
+            }
+        });
+    }
+
+    /**
+     *
+     * @param email email a verifier
+     * @return  true si adresse correcte, false sinon
+     */
+    public final static boolean isValidEmail(String email) {
+        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    /**
+     *
+     * @param num numero a verifier
+     * @return true si num correct, false sinon
+     */
+    public final static boolean isValidPhoneNumber(String num){
+        return android.util.Patterns.PHONE.matcher(num).matches();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
