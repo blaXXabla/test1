@@ -17,5 +17,6 @@
     <string name="stringPush">Ajouter données HL</string>
     <string name="title_activity_code_magasins">CodeMagasin</string>
     <string name="title_activity_test_data_hl">testDataHL</string>
+    <string name="title_activity_veille">veille</string>
 
 </resources>

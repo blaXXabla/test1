@@ -41,6 +41,10 @@
             android:name=".testDataHL"
             android:label="@string/title_activity_test_data_hl" >
         </activity>
+        <activity
+            android:name=".veille"
+            android:label="@string/title_activity_veille" >
+        </activity>
     </application>
 
 </manifest>
