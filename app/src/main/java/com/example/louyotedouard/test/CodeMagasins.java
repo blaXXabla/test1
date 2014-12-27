@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class CodeMagasins extends ActionBarActivity {
@@ -45,10 +46,17 @@ public class CodeMagasins extends ActionBarActivity {
             public void onClick(View arg0) {
 
                 final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
-                globalVariable.setIdMagasin(Integer.parseInt(et_codemagasin.getText().toString()));
-                Intent browserIntent =
-                        new Intent(CodeMagasins.this, choixMode.class);
-                startActivity(browserIntent);
+                if(et_codemagasin.length()>0) {
+                    globalVariable.setIdMagasin(Integer.parseInt(et_codemagasin.getText().toString()));
+                    Intent browserIntent =
+                            new Intent(CodeMagasins.this, choixMode.class);
+                    startActivity(browserIntent);
+                }
+                else
+                {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Veuillez saisir un code", Toast.LENGTH_LONG);
+                    toast.show();
+                }
 
             }
 
