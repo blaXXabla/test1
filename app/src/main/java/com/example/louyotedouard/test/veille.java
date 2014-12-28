@@ -49,11 +49,8 @@ public class veille extends ActionBarActivity {
             public View makeView() {
 
                 ImageView imageView = new ImageView(veille.this);
-                imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-
-                FrameLayout.LayoutParams params = new ImageSwitcher.LayoutParams( LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-
-                imageView.setLayoutParams(params);
+                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                imageView.setLayoutParams(new ImageSwitcher.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
                 return imageView;
 
             }
