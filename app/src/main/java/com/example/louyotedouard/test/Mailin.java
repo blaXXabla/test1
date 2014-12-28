@@ -6,7 +6,8 @@ import java.net.URL;
 import java.util.*;
 import javax.net.ssl.HttpsURLConnection;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+
+
 
 public class Mailin {
 
