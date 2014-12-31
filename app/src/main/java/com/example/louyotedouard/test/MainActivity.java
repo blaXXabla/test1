@@ -22,6 +22,11 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Mailin http = new Mailin("https://api.sendinblue.com/v2.0","your access key");
+        String str = http.get_account();
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_code_magasins);
         addListenerOnButton();
