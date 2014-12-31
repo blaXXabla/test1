@@ -1,5 +1,7 @@
 package com.example.louyotedouard.test;
 
+import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -22,12 +24,23 @@ public class FormulaireInscription extends ActionBarActivity {
     private         Button              btnLaunch;
     private         EditText            et_info;
 
+    CountDownTimer countdown = new CountDownTimer(20000, 1000) {
+        @Override
+        public void onTick(long millisUntilFinished) {}
+
+        @Override
+        public void onFinish() {
+            Intent browserIntent =new Intent(FormulaireInscription.this, veille.class);
+            startActivity(browserIntent);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulaire_inscription);
         addListenerOnButton();
+        countdown.start();
     }
 
     public void addListenerOnButton() {
@@ -36,6 +49,13 @@ public class FormulaireInscription extends ActionBarActivity {
         rb_NumTel = (RadioButton) findViewById(R.id.radio_numtel);
         btnLaunch = (Button) findViewById(R.id.btn_ValideFormulaireIns);
         et_info = (EditText) findViewById(R.id.et_info);
+
+        View.OnClickListener vue = new View.OnClickListener() {
+            public void onClick(View v) {
+                countdown.cancel();
+                countdown.start();
+            }
+        };
 
         if (rb_Email.isChecked())
             textView.setText(R.string.radioEmail);

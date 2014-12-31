@@ -1,5 +1,6 @@
 package com.example.louyotedouard.test;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.os.CountDownTimer;
@@ -10,10 +11,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 import android.widget.ViewSwitcher.ViewFactory;
 
@@ -80,6 +83,21 @@ public class veille extends ActionBarActivity {
                 }
             }
          }.start();
+
+        addListenerOnButton();
+
+    }
+    public void addListenerOnButton() {
+
+        imageSwitcher.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Intent browserIntent =new Intent(veille.this, FormulaireInscription.class);
+                startActivity(browserIntent);
+            }
+
+        });
 
     }
 }

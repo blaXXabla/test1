@@ -1,6 +1,7 @@
 package com.example.louyotedouard.test;
 
 
+import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -30,6 +31,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_code_magasins);
         addListenerOnButton();
+
     }
     public void addListenerOnButton() {
 
@@ -46,6 +48,7 @@ public class MainActivity extends ActionBarActivity {
         Button bt7 = (Button) findViewById(R.id.btn_code7);
         Button bt8 = (Button) findViewById(R.id.btn_code8);
         Button bt9 = (Button) findViewById(R.id.btn_code9);
+
 
         btn_launch.setOnClickListener(new View.OnClickListener() {
 
