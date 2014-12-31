@@ -24,6 +24,11 @@ public class FormulaireInscription extends ActionBarActivity {
     private         Button              btnLaunch;
     private         EditText            et_info;
 
+    private Mailin http = new Mailin("https://api.sendinblue.com/v2.0","6Eg59DMZzB0yUG1s");
+    private String str = http.create_sender("Douchet Loic","Douchet.loic55@gmail.com", new String [] {"1 2 3 4","5 6 7 8 mon domaine"});
+
+
+
     CountDownTimer countdown = new CountDownTimer(20000, 1000) {
         @Override
         public void onTick(long millisUntilFinished) {}
@@ -57,9 +62,11 @@ public class FormulaireInscription extends ActionBarActivity {
             }
         };
 
-        if (rb_Email.isChecked())
+        if (rb_Email.isChecked()) {
             textView.setText(R.string.radioEmail);
-        else
+            countdown.cancel();
+            countdown.start();
+        }else
             textView.setText(R.string.radioNumTel);
 
         rb_Email.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +76,8 @@ public class FormulaireInscription extends ActionBarActivity {
                 textView.setText(R.string.radioEmail);
                 et_info.setText("");
                 textView.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                countdown.cancel();
+                countdown.start();
             }
         });
 
@@ -79,6 +88,8 @@ public class FormulaireInscription extends ActionBarActivity {
                 textView.setText(R.string.radioNumTel);
                 et_info.setText("");
                 textView.setInputType(InputType.TYPE_CLASS_PHONE);
+                countdown.cancel();
+                countdown.start();
             }
         });
 
@@ -89,9 +100,16 @@ public class FormulaireInscription extends ActionBarActivity {
                 if(rb_Email.isChecked())
                 {
                     if(isValidEmail(et_info.getText().toString())) {
+
+                        Toast toast = Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG);
+                        countdown.cancel();
+                        countdown.start();
+                        toast.show();
                     }
                     else
                     {
+                        countdown.cancel();
+                        countdown.start();
                         Toast toast = Toast.makeText(getApplicationContext(), "Veuillez saisir une addresse email correcte", Toast.LENGTH_LONG);
                         toast.show();
                     }
@@ -99,9 +117,13 @@ public class FormulaireInscription extends ActionBarActivity {
                 else
                 {
                     if(isValidPhoneNumber(et_info.getText().toString())) {
+                        countdown.cancel();
+                        countdown.start();
                     }
                     else
                     {
+                        countdown.cancel();
+                        countdown.start();
                         Toast toast = Toast.makeText(getApplicationContext(), "Veuillez saisir un numéro correct", Toast.LENGTH_LONG);
                         toast.show();
                     }

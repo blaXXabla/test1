@@ -23,9 +23,9 @@ import android.widget.ViewSwitcher.ViewFactory;
 
 public class veille extends ActionBarActivity {
 
-    ImageSwitcher imageSwitcher;
+    private ImageSwitcher imageSwitcher;
 
-    Animation slide_in_left, slide_out_right;
+    private Animation slide_in_left, slide_out_right;
 
     int imageResources[] = {R.drawable.image1,R.drawable.image2,R.drawable.image3};
 
@@ -35,6 +35,7 @@ public class veille extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_veille);
+
 
         imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
 
