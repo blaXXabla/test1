@@ -102,6 +102,7 @@ public class FormulaireInscription extends ActionBarActivity {
                     if(isValidEmail(et_info.getText().toString())) {
 
                         Toast toast = Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG);
+                        http.send_email(str,"sujet",new String[]{"from"},"","text","cc","bcc",new String[]{"replyto"},"","");
                         countdown.cancel();
                         countdown.start();
                         toast.show();
