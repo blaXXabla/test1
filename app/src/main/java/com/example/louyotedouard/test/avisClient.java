@@ -58,7 +58,7 @@ public class avisClient extends ActionBarActivity {
                 if(!spam) {
                     if (haveNetworkConnection()) {
                         pushDataHL();
-                        new Connexion().execute("positif", Integer.toString(idMag));
+                        new Connexion().execute("avis","positif", Integer.toString(idMag));
                     } else
                         stockDataInFile("positif", idMag);
                     ad.show();
@@ -77,7 +77,7 @@ public class avisClient extends ActionBarActivity {
                 if(!spam) {
                     if (haveNetworkConnection()) {
                         pushDataHL();
-                        new Connexion().execute("negatif", Integer.toString(idMag));
+                        new Connexion().execute("avis","negatif", Integer.toString(idMag));
                     } else
                         stockDataInFile("negatif", idMag);
                     ad.show();
@@ -217,7 +217,7 @@ public class avisClient extends ActionBarActivity {
                 while ((line = bufferedReader.readLine()) != null) {
                     String avis=line.substring(0,line.indexOf("%"));
                     String id=line.substring(line.indexOf("%")+1);
-                    new Connexion().execute(avis, id);
+                    new Connexion().execute("avis",avis, id); //TODO gerer activity
                 }
             }
             catch(FileNotFoundException fnf){}

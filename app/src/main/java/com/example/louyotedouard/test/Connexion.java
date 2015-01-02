@@ -16,29 +16,41 @@ import android.os.AsyncTask;
  */
 public class Connexion extends AsyncTask<String, Integer, Double>{
 
-    public void insert(String a,String id)
+    /**
+     * Insert des donnees dans la DB
+     * @param act activité en cours : avis ou inscrption
+     * @param a avis du client
+     * @param id id du magasin
+     */
+    //TODO adapter la methode pour inserer avis ou inscritpion
+    public void insert(String act,String a,String id)
     {
-        String avis=a;
-        HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://louyotedouard.fr/autre/test.php");
-        try
-        {
-            ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
-            nameValuePairs.add(new BasicNameValuePair("avis",avis));
-            nameValuePairs.add(new BasicNameValuePair("id_magasin",id));
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-            HttpResponse response = httpclient.execute(httppost);
+        if(act.equals("avis")) {
+            String avis = a;
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost("http://louyotedouard.fr/autre/test.php");
+            try {
+                ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
+                nameValuePairs.add(new BasicNameValuePair(act, avis));
+                nameValuePairs.add(new BasicNameValuePair("id_magasin", id));
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                HttpResponse response = httpclient.execute(httppost);
+            } catch (Exception e) {
+            }
         }
-        catch(Exception e)
+        else
         {
+
         }
+
     }
 
     @Override
     protected Double doInBackground(String... params) {
-        String avis = params[0];
-        String id=params[1];
-        insert(avis,id);
+        String activity=params[0];
+        String avis = params[1];
+        String id=params[2];
+        insert(activity,avis,id);
         return null;
     }
 
