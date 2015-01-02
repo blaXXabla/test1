@@ -12,13 +12,14 @@ import android.view.View.OnClickListener;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private     Button      btn_launch;
-    private     EditText    et_codemagasin; //TODO mettre un label a la place du edit text
+    private     TextView    et_codemagasin;
     private     Button      btn_effacer;
 
     @Override
@@ -33,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
 
         btn_launch = (Button) findViewById(R.id.btn_magasins);
         btn_effacer = (Button) findViewById(R.id.btn_effacer);
-        et_codemagasin = (EditText) findViewById(R.id.et_codeMagasins);
+        et_codemagasin = (TextView) findViewById(R.id.et_codeMagasins);
         Button bt0 = (Button) findViewById(R.id.btn_code0);
         Button bt1 = (Button) findViewById(R.id.btn_code1);
         Button bt2 = (Button) findViewById(R.id.btn_code2);

@@ -32,13 +32,11 @@
         android:layout_height="wrap_content"
         android:text="0"
         android:id="@+id/btn_code0"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center|bottom"
-        android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_below="@+id/et_codeMagasins"
-        android:layout_toLeftOf="@+id/et_codeMagasins"
-        android:layout_toStartOf="@+id/et_codeMagasins" />
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -80,7 +78,7 @@
         android:text="4"
         android:id="@+id/btn_code4"
         android:layout_gravity="center|bottom"
-        android:layout_alignTop="@+id/btn_code3"
+        android:layout_above="@+id/btn_code9"
         android:layout_alignLeft="@+id/btn_code9"
         android:layout_alignStart="@+id/btn_code9" />
 
@@ -134,11 +132,9 @@
         android:text="9"
         android:id="@+id/btn_code9"
         android:layout_gravity="center|bottom"
-        android:layout_below="@+id/btn_code4"
-        android:layout_toRightOf="@+id/et_codeMagasins"
-        android:layout_toEndOf="@+id/et_codeMagasins"
-        android:layout_marginLeft="9dp"
-        android:layout_marginStart="9dp" />
+        android:layout_above="@+id/btn_effacer"
+        android:layout_toRightOf="@+id/btn_effacer"
+        android:layout_toEndOf="@+id/btn_effacer" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -146,13 +142,17 @@
         android:inputType="numberSigned"
         android:ems="10"
         android:id="@+id/et_codeMagasins"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
         android:hint="Code magasin"
         android:windowSoftInputMode="adjustResize"
         android:autoText="true"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/btn_code1"
+        android:layout_alignStart="@+id/btn_code1"
+        android:layout_toLeftOf="@+id/btn_code4"
+        android:layout_toStartOf="@+id/btn_code4" />
 
     <Button
         android:layout_width="wrap_content"
