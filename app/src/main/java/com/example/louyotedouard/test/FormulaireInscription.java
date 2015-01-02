@@ -27,8 +27,6 @@ public class FormulaireInscription extends ActionBarActivity {
     private Mailin http = new Mailin("https://api.sendinblue.com/v2.0","6Eg59DMZzB0yUG1s");
     private String str = http.create_sender("Douchet Loic","Douchet.loic55@gmail.com", new String [] {"1 2 3 4","5 6 7 8 mon domaine"});
 
-
-
     CountDownTimer countdown = new CountDownTimer(20000, 1000) {
         @Override
         public void onTick(long millisUntilFinished) {}
