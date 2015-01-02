@@ -18,7 +18,7 @@ import android.widget.Toast;
 public class MainActivity extends ActionBarActivity {
 
     private     Button      btn_launch;
-    private     EditText    et_codemagasin;
+    private     EditText    et_codemagasin; //TODO mettre un label a la place du edit text
     private     Button      btn_effacer;
 
     @Override

@@ -111,7 +111,7 @@ public class FormulaireInscription extends ActionBarActivity {
                     {
                         countdown.cancel();
                         countdown.start();
-                        Toast toast = Toast.makeText(getApplicationContext(), "Veuillez saisir une addresse email correcte", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(), "Veuillez saisir un email correcte", Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }

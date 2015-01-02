@@ -82,7 +82,7 @@ public class choixMode extends ActionBarActivity{
                             while ((line = bufferedReader.readLine()) != null) {
                                 String avis = line.substring(0, line.indexOf("%"));
                                 String id = line.substring(line.indexOf("%") + 1);
-                                new Connexion().execute(avis, id);
+                                new Connexion().execute("avis",avis, id); //TODO gerer activity
                             }
                         } catch (FileNotFoundException fnf) {
                             Toast toast = Toast.makeText(getApplicationContext(), "Fichier inexistant", Toast.LENGTH_LONG);
