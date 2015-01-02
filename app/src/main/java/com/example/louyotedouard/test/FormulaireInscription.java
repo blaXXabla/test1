@@ -15,7 +15,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+//test
 public class FormulaireInscription extends ActionBarActivity {
 
     private         TextView            textView;
