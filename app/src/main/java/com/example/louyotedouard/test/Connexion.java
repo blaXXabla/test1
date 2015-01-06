@@ -28,7 +28,7 @@ public class Connexion extends AsyncTask<String, Integer, Double>{
         if(act.equals("avis")) {
             String avis = a;
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://louyotedouard.fr/autre/test.php");
+            HttpPost httppost = new HttpPost("http://louyotedouard.fr/autre/avisClient.php");
             try {
                 ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
                 nameValuePairs.add(new BasicNameValuePair(act, avis));
