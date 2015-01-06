@@ -53,12 +53,12 @@ public class avisClient extends ActionBarActivity {
             @Override
             public void onClick(View arg0) {
                 final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
-                int idMag=globalVariable.getIdMagasin();
+                String idMag=globalVariable.getIdMagasin();
                 boolean spam = checkSpam();
                 if(!spam) {
                     if (haveNetworkConnection()) {
                         pushDataHL();
-                        new Connexion().execute("avis","positif", Integer.toString(idMag));
+                        new Connexion().execute("avis","positif", idMag);
                     } else
                         stockDataInFile("positif", idMag);
                     ad.show();
@@ -72,12 +72,12 @@ public class avisClient extends ActionBarActivity {
             @Override
             public void onClick(View arg0) {
                 final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
-                int idMag = globalVariable.getIdMagasin();
+                String idMag = globalVariable.getIdMagasin();
                 boolean spam = checkSpam();
                 if(!spam) {
                     if (haveNetworkConnection()) {
                         pushDataHL();
-                        new Connexion().execute("avis","negatif", Integer.toString(idMag));
+                        new Connexion().execute("avis","negatif", idMag);
                     } else
                         stockDataInFile("negatif", idMag);
                     ad.show();
@@ -169,9 +169,9 @@ public class avisClient extends ActionBarActivity {
      * @param s valeur de l'avis
      * @param id id du magasin
      */
-    public void stockDataInFile(String s, int id)
+    public void stockDataInFile(String s, String id)
     {
-        String input=s+"%"+Integer.toString(id)+"\n";
+        String input=s+"%"+id+"\n";
         String FILENAME = "dbOffline.txt";
         File file = getApplicationContext().getFileStreamPath(FILENAME);
 

@@ -54,7 +54,7 @@ public class MainActivity extends ActionBarActivity {
 
                 final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
                 if(et_codemagasin.length()>0) {
-                    globalVariable.setIdMagasin(Integer.parseInt(et_codemagasin.getText().toString()));
+                    globalVariable.setIdMagasin(et_codemagasin.getText().toString());
                     Intent browserIntent =
                             new Intent(MainActivity.this, choixMode.class);
                     startActivity(browserIntent);

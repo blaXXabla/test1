@@ -6,13 +6,13 @@ import android.app.Application;
  * Created by PC Xavier on 24/12/2014.
  */
 public class GlobalClass extends Application {
-    private int idMagasin;
+    private String idMagasin;
 
-    public int getIdMagasin() {
+    public String getIdMagasin() {
         return idMagasin;
     }
 
-    public void setIdMagasin(int idMagasin) {
+    public void setIdMagasin(String idMagasin) {
         this.idMagasin = idMagasin;
     }
 }
