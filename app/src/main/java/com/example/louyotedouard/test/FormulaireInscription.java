@@ -15,9 +15,6 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.HashMap;
-import java.util.Map;
-
 //test.
 public class FormulaireInscription extends ActionBarActivity {
 
@@ -101,32 +98,18 @@ public class FormulaireInscription extends ActionBarActivity {
                 if(rb_Email.isChecked())
                 {
                     if(isValidEmail(et_info.getText().toString())) {
+                        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+                        String idMag=globalVariable.getIdMagasin();
+                        String adr_mail=et_info.getText().toString();
+                        String typeEnvoi="mail";
+                        new Connexion().execute(typeEnvoi,adr_mail,idMag);
 
                         Toast toast = Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG);
-                        toast.show();
-
-                        http.send_sms("+33667847780","From","Good morning - test","","Tag1","");
-
-                        Map< String, String > to = new HashMap< String, String >();
-                        to.put("xav.antoine57@gmail.com", "to whom");
-                        Map < String, String > cc = new HashMap < String, String > ();
-                        cc.put("louyot.edouard@gmail.com", "cc whom");
-                        Map < String, String > bcc = new HashMap < String, String > ();
-                        bcc.put("megamo589@gmail.com", "bcc whom");
-                        Map < String, String > headers = new HashMap < String, String > ();
-                        headers.put("Content-Type", "text/html; charset=iso-8859-1");
-                        headers.put("X-param1", "value1");
-                        headers.put("X-param2", "value2");
-                        headers.put("X-Mailin-custom", "my custom value");
-                        headers.put("X-Mailin-IP", "102.102.1.2");
-                        headers.put("X-Mailin-Tag", "My tag");
-
-                        Toast toast2 = Toast.makeText(getApplicationContext(), "email", Toast.LENGTH_LONG);
-                        toast2.show();
-
-                        String str = http.send_email(to,"My subject",new String [] {"xav.antoine57@gmail.com","from email"},"This is the <h1>HTML</h1>","This is the text",cc,bcc,new String [] {"xav.antoine57@gmail.com","reply to"},new String [] {},headers);
+                        http.send_email(str,"sujet",new String[]{"from"},"","text","cc","bcc",new String[]{"replyto"},"","");
                         countdown.cancel();
                         countdown.start();
+                        toast.show();
+
                     }
                     else
                     {
@@ -139,6 +122,12 @@ public class FormulaireInscription extends ActionBarActivity {
                 else
                 {
                     if(isValidPhoneNumber(et_info.getText().toString())) {
+                        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+                        String idMag=globalVariable.getIdMagasin();
+                        String num_sms=et_info.getText().toString();
+                        String typeEnvoi="sms";
+                        new Connexion().execute(typeEnvoi,num_sms,idMag);
+
                         countdown.cancel();
                         countdown.start();
                     }
