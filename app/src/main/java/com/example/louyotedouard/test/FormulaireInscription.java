@@ -1,6 +1,7 @@
 package com.example.louyotedouard.test;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -14,6 +15,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.net.Authenticator;
+import java.net.PasswordAuthentication;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
 //test.
 public class FormulaireInscription extends ActionBarActivity {
@@ -91,6 +98,7 @@ public class FormulaireInscription extends ActionBarActivity {
             }
         });
 
+
         btnLaunch.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -104,8 +112,25 @@ public class FormulaireInscription extends ActionBarActivity {
                         String typeEnvoi="mail";
                         new Connexion().execute(typeEnvoi,adr_mail,idMag);
 
+                        Map< String, String > to = new HashMap< String, String >();
+                        to.put(adr_mail, "to whom");
+                        Map < String, String > cc = new HashMap < String, String > ();
+                        cc.put("cyril.borderichard@gmail.com", "cc whom");
+                        Map < String, String > bcc = new HashMap < String, String > ();
+                        bcc.put("bcc@example.net", "bcc whom");
+                        Map < String, String > headers = new HashMap < String, String > ();
+                        headers.put("Content-Type", "text/html; charset=iso-8859-1");
+                        headers.put("X-param1", "value1");
+                        headers.put("X-param2", "value2");
+                        headers.put("X-Mailin-custom", "my custom value");
+                        headers.put("X-Mailin-IP", "102.102.1.2");
+                        headers.put("X-Mailin-Tag", "My tag");
+                        String str = http.send_email(to,"My subject",new String [] {"from@email.com","from email"},"This is the <h1>HTML</h1>","This is the text",cc,bcc,new String [] {"replyto@email.com","reply to"},new String [] {},headers);
+
                         Toast toast = Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG);
-                        http.send_email(str,"sujet",new String[]{"from"},"","text","cc","bcc",new String[]{"replyto"},"","");
+                        //http.send_email(str,"sujet",new String[]{"from"},"","text","cc","bcc",new String[]{"replyto"},"","");
+
+
                         countdown.cancel();
                         countdown.start();
                         toast.show();
