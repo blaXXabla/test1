@@ -69,42 +69,79 @@ public class choixMode extends ActionBarActivity{
 
             @Override
             public void onClick(View arg0) {
+                pushClientHL();
+                pushCoordHL();
+            }
+        });}
 
-                String FILENAME = "dbOffline.txt";
-                File file = getApplicationContext().getFileStreamPath(FILENAME);
-                if(haveNetworkConnection()) {
-                    if (file.exists()) {
-                        try {
-                            FileInputStream in = openFileInput(FILENAME);
-                            InputStreamReader inputStreamReader = new InputStreamReader(in);
-                            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                            String line;
-                            while ((line = bufferedReader.readLine()) != null) {
-                                String avis = line.substring(0, line.indexOf("%"));
-                                String id = line.substring(line.indexOf("%") + 1);
-                                new Connexion().execute("avis",avis, id); //TODO gerer activity
-                            }
-                        } catch (FileNotFoundException fnf) {
-                            Toast toast = Toast.makeText(getApplicationContext(), "Fichier inexistant", Toast.LENGTH_LONG);
-                            toast.show();
-                        } catch (Exception e) {
-                            Toast toast = Toast.makeText(getApplicationContext(), "Echec de l'ajout", Toast.LENGTH_LONG);
-                            toast.show();
-                        }
+
+    public void pushClientHL()
+    {
+        String FILENAME = "dbOffline.txt";
+        File file = getApplicationContext().getFileStreamPath(FILENAME);
+        if(haveNetworkConnection()) {
+            if (file.exists()) {
+                try {
+                    FileInputStream in = openFileInput(FILENAME);
+                    InputStreamReader inputStreamReader = new InputStreamReader(in);
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        String avis = line.substring(0, line.indexOf("%"));
+                        String id = line.substring(line.indexOf("%") + 1);
+                        new Connexion().execute("avis",avis, id); //TODO gerer activity
                     }
-                    Toast toast = Toast.makeText(getApplicationContext(), "Opération terminée", Toast.LENGTH_LONG);
+                } catch (FileNotFoundException fnf) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Fichier inexistant", Toast.LENGTH_LONG);
                     toast.show();
-                    file.delete();
-                }
-                else
-                {
-                    Toast toast = Toast.makeText(getApplicationContext(), "Connexion internet requise", Toast.LENGTH_LONG);
+                } catch (Exception e) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Echec de l'ajout", Toast.LENGTH_LONG);
                     toast.show();
                 }
             }
+            Toast toast = Toast.makeText(getApplicationContext(), "Opération terminée", Toast.LENGTH_LONG);
+            toast.show();
+            file.delete();
+        }
+        else
+        {
+            Toast toast = Toast.makeText(getApplicationContext(), "Connexion internet requise", Toast.LENGTH_LONG);
+            toast.show();
+        }
+    }
 
-        });
-
+    public void pushCoordHL()
+    {
+        String FILENAME = "dbOfflineClient.txt";
+        File file = getApplicationContext().getFileStreamPath(FILENAME);
+        if(haveNetworkConnection()) {
+            if (file.exists()) {
+                try {
+                    FileInputStream in = openFileInput(FILENAME);
+                    InputStreamReader inputStreamReader = new InputStreamReader(in);
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        String tab[]=line.split("%");
+                        new Connexion().execute(tab[0],tab[1],tab[2]); //TODO gerer activity
+                    }
+                } catch (FileNotFoundException fnf) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Fichier inexistant", Toast.LENGTH_LONG);
+                    toast.show();
+                } catch (Exception e) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Echec de l'ajout", Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            }
+            Toast toast = Toast.makeText(getApplicationContext(), "Opération terminée", Toast.LENGTH_LONG);
+            toast.show();
+            file.delete();
+        }
+        else
+        {
+            Toast toast = Toast.makeText(getApplicationContext(), "Connexion internet requise", Toast.LENGTH_LONG);
+            toast.show();
+        }
     }
 
     /**

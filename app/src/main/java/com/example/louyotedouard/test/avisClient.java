@@ -54,8 +54,7 @@ public class avisClient extends ActionBarActivity {
             public void onClick(View arg0) {
                 final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
                 String idMag=globalVariable.getIdMagasin();
-                boolean spam = checkSpam();
-                if(!spam) {
+                if(!checkSpam()) {
                     if (haveNetworkConnection()) {
                         pushDataHL();
                         new Connexion().execute("avis","positif", idMag);
@@ -73,8 +72,7 @@ public class avisClient extends ActionBarActivity {
             public void onClick(View arg0) {
                 final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
                 String idMag = globalVariable.getIdMagasin();
-                boolean spam = checkSpam();
-                if(!spam) {
+                if(!checkSpam()) {
                     if (haveNetworkConnection()) {
                         pushDataHL();
                         new Connexion().execute("avis","negatif", idMag);
