@@ -38,26 +38,32 @@
                     android:text="@string/radioNumTel"/>
             </RadioGroup>
 
-            <TextView
-                android:paddingTop="@dimen/padding_medium"
-                android:id="@+id/textViewFormulaire"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/stringEmail"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="7"
+                    android:id="@+id/et_info"
+                    android:layout_marginTop="17dp"
+                    android:textAlignment="center" />
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:ems="15"
-                android:id="@+id/et_info"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="17dp"
-                android:windowSoftInputMode="adjustResize"
-                android:autoText="true"
-                android:textAlignment="center" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_arobase"
+                    android:layout_margin="50px"
+                    android:text="@string/arobase"/>
+
+                <AutoCompleteTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30px"
+                    android:id="@+id/auto_domaines"
+                    android:ems="7"/>
+                </LinearLayout>
+
 
             <Button
                 android:layout_width="wrap_content"

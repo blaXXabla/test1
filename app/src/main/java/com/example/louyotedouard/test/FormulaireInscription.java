@@ -7,14 +7,19 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
@@ -25,11 +30,12 @@ import java.util.Properties;
 //test.
 public class FormulaireInscription extends ActionBarActivity {
 
-    private         TextView            textView;
-    private         RadioButton         rb_Email;
-    private         RadioButton         rb_NumTel;
-    private         Button              btnLaunch;
-    private         EditText            et_info;
+    private         RadioButton             rb_Email;
+    private         RadioButton             rb_NumTel;
+    private         Button                  btnLaunch;
+    private         EditText                et_info;
+    private         AutoCompleteTextView    auto_textview;
+    private         TextView                arobase;
 
     private Mailin http = new Mailin("https://api.sendinblue.com/v2.0","6Eg59DMZzB0yUG1s");
     private String str = http.create_sender("Douchet Loic","Douchet.loic55@gmail.com", new String [] {"1 2 3 4","5 6 7 8 mon domaine"});
@@ -54,11 +60,12 @@ public class FormulaireInscription extends ActionBarActivity {
     }
 
     public void addListenerOnButton() {
-        textView = (TextView) findViewById(R.id.textViewFormulaire);
-        rb_Email = (RadioButton) findViewById(R.id.radio_email);
-        rb_NumTel = (RadioButton) findViewById(R.id.radio_numtel);
-        btnLaunch = (Button) findViewById(R.id.btn_ValideFormulaireIns);
-        et_info = (EditText) findViewById(R.id.et_info);
+        auto_textview           = (AutoCompleteTextView)    findViewById(R.id.auto_domaines);
+        rb_Email                = (RadioButton)             findViewById(R.id.radio_email);
+        rb_NumTel               = (RadioButton)             findViewById(R.id.radio_numtel);
+        btnLaunch               = (Button)                  findViewById(R.id.btn_ValideFormulaireIns);
+        et_info                 = (EditText)                findViewById(R.id.et_info);
+        arobase                 = (TextView)                findViewById(R.id.tv_arobase);
 
         View.OnClickListener vue = new View.OnClickListener() {
             public void onClick(View v) {
@@ -68,19 +75,17 @@ public class FormulaireInscription extends ActionBarActivity {
         };
 
         if (rb_Email.isChecked()) {
-            textView.setText(R.string.radioEmail);
             countdown.cancel();
             countdown.start();
-        }else
-            textView.setText(R.string.radioNumTel);
+        }
 
         rb_Email.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                textView.setText(R.string.radioEmail);
                 et_info.setText("");
-                textView.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                auto_textview.setVisibility(View.VISIBLE);
+                arobase.setVisibility(View.VISIBLE);
                 countdown.cancel();
                 countdown.start();
             }
@@ -90,9 +95,9 @@ public class FormulaireInscription extends ActionBarActivity {
 
             @Override
             public void onClick(View arg0) {
-                textView.setText(R.string.radioNumTel);
                 et_info.setText("");
-                textView.setInputType(InputType.TYPE_CLASS_PHONE);
+                auto_textview.setVisibility(View.GONE);
+                arobase.setVisibility(View.GONE);
                 countdown.cancel();
                 countdown.start();
             }
@@ -105,7 +110,7 @@ public class FormulaireInscription extends ActionBarActivity {
             public void onClick(View arg0) {
                 if(rb_Email.isChecked())
                 {
-                    if(isValidEmail(et_info.getText().toString())) {
+                    if(isValidEmail(et_info.getText().toString()+arobase.getText().toString()+auto_textview.getText().toString())) {
                         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
                         String idMag=globalVariable.getIdMagasin();
                         String adr_mail=et_info.getText().toString();
@@ -166,6 +171,20 @@ public class FormulaireInscription extends ActionBarActivity {
                 }
             }
         });
+
+        fillACTextView();
+    }
+
+    /**
+     * Rempli le auto complete text view avec les noms de domaine
+     */
+    public void fillACTextView()
+    {
+        String[] DOMAINES={"gmail.com","sfr.fr","neuf.fr","yahoo.fr","orange.fr","hotmail.fr"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, DOMAINES);
+        auto_textview.setAdapter(adapter);
     }
 
     /**
