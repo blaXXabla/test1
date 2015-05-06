@@ -38,9 +38,20 @@ public class Connexion extends AsyncTask<String, Integer, Double>{
             } catch (Exception e) {
             }
         }
-        else
-        {
 
+        if(act.equals("mail"))
+        {
+            String mail=a;
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost("http://louyotedouard.fr/autre/emailClient.php");
+            try {
+                ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
+                nameValuePairs.add(new BasicNameValuePair(act, mail));
+                nameValuePairs.add(new BasicNameValuePair("id_magasin", id));
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                HttpResponse response = httpclient.execute(httppost);
+            } catch (Exception e) {
+            }
         }
 
     }

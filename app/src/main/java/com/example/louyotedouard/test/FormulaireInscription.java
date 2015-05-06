@@ -113,7 +113,7 @@ public class FormulaireInscription extends ActionBarActivity {
                     if(isValidEmail(et_info.getText().toString()+arobase.getText().toString()+auto_textview.getText().toString())) {
                         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
                         String idMag=globalVariable.getIdMagasin();
-                        String adr_mail=et_info.getText().toString();
+                        String adr_mail=et_info.getText().toString()+arobase.getText().toString()+auto_textview.getText().toString();
                         String typeEnvoi="mail";
                         new Connexion().execute(typeEnvoi,adr_mail,idMag);
 
