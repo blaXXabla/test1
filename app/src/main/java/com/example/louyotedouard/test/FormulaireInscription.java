@@ -110,9 +110,10 @@ public class FormulaireInscription extends ActionBarActivity {
             public void onClick(View arg0) {
                 if(rb_Email.isChecked())
                 {
+                    final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+                    String idMag=globalVariable.getIdMagasin();
                     if(isValidEmail(et_info.getText().toString()+arobase.getText().toString()+auto_textview.getText().toString())) {
-                        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
-                        String idMag=globalVariable.getIdMagasin();
+
                         String adr_mail=et_info.getText().toString()+arobase.getText().toString()+auto_textview.getText().toString();
                         String typeEnvoi="mail";
                         new Connexion().execute(typeEnvoi,adr_mail,idMag);
@@ -155,8 +156,9 @@ public class FormulaireInscription extends ActionBarActivity {
                         final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
                         String idMag=globalVariable.getIdMagasin();
                         String num_sms=et_info.getText().toString();
-                        String typeEnvoi="sms";
-                        new Connexion().execute(typeEnvoi,num_sms,idMag);
+                        String typeEnvoi="tel";
+                        String numtel=et_info.getText().toString();
+                        new Connexion().execute(typeEnvoi,numtel,idMag);
 
                         countdown.cancel();
                         countdown.start();

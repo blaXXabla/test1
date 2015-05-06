@@ -54,6 +54,21 @@ public class Connexion extends AsyncTask<String, Integer, Double>{
             }
         }
 
+        if(act.equals("tel"))
+        {
+            String tel=a;
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost("http://louyotedouard.fr/autre/telephoneClient.php");
+            try {
+                ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
+                nameValuePairs.add(new BasicNameValuePair(act, tel));
+                nameValuePairs.add(new BasicNameValuePair("id_magasin", id));
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                HttpResponse response = httpclient.execute(httppost);
+            } catch (Exception e) {
+            }
+        }
+
     }
 
     @Override
